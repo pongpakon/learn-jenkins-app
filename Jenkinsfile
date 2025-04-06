@@ -18,7 +18,7 @@ pipeline {
             echo " Verifying required files..."
             sh '''
                 test -f index.html || (echo "index.html is missing!" && exit 1)
-                test -f netlify/functions/random-menu.js || (echo " The random menu function is missing!" && exit 1)
+                test -f netlify/functions/random-movie.js || (echo " The random menu function is missing!" && exit 1)
                 echo "All necessary files are in place!"
             '''
         }
@@ -34,7 +34,7 @@ pipeline {
         steps {
             echo "Running function load test..."
             sh '''
-                node -e "require('./netlify/functions/random-menu.js'); console.log('Function loaded successfully!')"
+                node -e "require('./netlify/functions/random-movie.js'); console.log('Function loaded successfully!')"
             '''
         }
     }
